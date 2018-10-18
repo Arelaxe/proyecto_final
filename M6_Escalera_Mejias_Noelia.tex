@@ -1,9 +1,34 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
 \begin{document}
 \title{Estudio de la eficiencia del algoritmo de la burbuja en C++}
 \author{Noelia Escalera Mejías}
 \date{}
 \maketitle
+\section{Resumen}
+URL del repositorio:
+\url{https://github.com/Arelaxe/proyecto_final}
+\\ \\
+Para el proyecto final del curso de LaTeX y Git, he decidido hacer un estudio sobre la eficiencia del algoritmo de la burbuja, de forma tanto teórica como empírica.
+\section{Introducción}
+El algoritmo de la burbuja es uno de los primeros algoritmos de ordenación que se aprenden a programar debido a la sencillez de su implementación. Sin embargo, ¿es eficiente? Esto es lo que vamos a comprobar en el presente informe. El lenguaje de programación en el que se trabajará será C++11.
+\section{Eficiencia teórica}
+Hay varias formas de implementar el algoritmo de la burbuja. Nosotros usaremos la más sencilla:
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\begin{lstlisting}[frame=single]
+void ordenar(int *v, int n) {
+ for (int i=0; i<n-1; i++)
+  for (int j=0; j<n-i-1; j++)
+   if (v[j]>v[j+1]) {
+    int aux = v[j];
+    v[j] = v[j+1];
+    v[j+1] = aux;
+   }
+}
+\end{lstlisting}
+La eficiencia teórica sería la siguiente:
+
 \end{document}
