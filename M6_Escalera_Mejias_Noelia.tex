@@ -63,4 +63,80 @@ Por tanto, el tiempo en el peor de los casos sería:
 =3+(n-1)\frac{17n+65}{2}=3+\frac{17n^2+65n-17n-65}{2}=\frac{17n^2+48n-59}{2}
 \end{displaymath}
 Luego podemos decir que tenemos una eficiencia de $O(n^2)$.
+\section{Eficiencia empírica}
+Para calcular la eficiencia empírica hemos usado los siguientes ficheros fuente:
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\begin{lstlisting}[frame=single]
+#include <iostream>
+#include <ctime> // Recursos para medir tiempos
+#include <cstdlib> // Para generacion de  numeros pseudoaleatorios
+
+using namespace std;
+
+void ordenar(int *v, int n) {
+ for (int i=0; i<n-1; i++)
+  for (int j=0; j<n-i-1; j++)
+   if (v[j]>v[j+1]) {
+    int aux = v[j];
+    v[j] = v[j+1];
+    v[j+1] = aux;
+   }
+}
+
+void sintaxis()
+{
+ cerr << "Sintaxis:" << endl;
+ cerr << " TAM: Tam del vector (>0)" << endl;
+ cerr << " VMAX: Valor max (>0)" << endl;
+ cerr << "Se genera un vector de tam TAM con elementos aleatorios en [0,VMAX[" << endl;
+ exit(EXIT_FAILURE);
+}
+
+int main(int argc, char * argv[])
+{
+ // Lectura de parametros
+ if (argc!=3)
+  sintaxis();
+ int tam=atoi(argv[1]); // Tam del vector
+ int vmax=atoi(argv[2]); // Valor max
+ if (tam<=0 || vmax<=0)
+  sintaxis();
+  
+ // Generacion del vector aleatorio
+ int *v=new int[tam]; // Reserva de memoria
+ srand(time(0)); // Inicializacion del generador de nums pseudoaleatorios
+ for (int i=0; i<tam; i++) // Recorrer   vector
+  v[i] = rand() % vmax; // Generar aleatorio [0,vmax[
+ clock_t tini; // Anotamos el tiempo de inicio
+ tini=clock();
+ int x = vmax+1;
+ ordenar(v,tam);
+ clock_t tfin; // Anotamos el tiempo de finalizacion
+ tfin=clock();
+ // Mostramos resultados
+ cout << tam << "\t" << (tfin-tini)/(double)CLOCKS_PER_SEC << endl;
+ delete [] v; // Liberamos memoria dinamica
+}
+\end{lstlisting}
+\lstset{language=Bash, breaklines=true, basicstyle=\footnotesize}
+\begin{lstlisting}[frame=single]
+#!/bin/csh
+@ inicio = 100
+@ fin = 30000
+@ incremento = 100
+set ejecutable = ordenacion
+set salida = tiempos_ordenacion.dat
+@ i = $inicio
+echo > $salida
+while ( $i <= $fin )
+echo Ejecucion tam = $i
+echo `./{$ejecutable} $i 10000` >> $salida
+@ i += $incremento
+end
+\end{lstlisting}
+Hemos compilado el programa ordenacion.cpp de la siguiente manera:
+\begin{center}
+{\bf \it g++ ordenacion.cpp -o ordenacion}
+\end{center}
+Tras ejecutar el script ejecucuiones\_ordenacion.csh
 \end{document}
