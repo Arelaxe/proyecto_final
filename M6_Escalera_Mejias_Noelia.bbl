@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{Carrillo2006}
+A.G. Carrillo and J.~Fern{\'a}ndez-Valdivia.
+\newblock {\em Abstracci{\'o}n y estructuras de datos en C++}.
+\newblock Delta, 2006.
+
+\bibitem{friedman2011problem}
+F.L. Friedman and E.B. Koffman.
+\newblock {\em Problem Solving, Abstraction, and Design using C++}.
+\newblock Pearson Education, 2011.
+
+\bibitem{koffman2006objects}
+E.B. Koffman and P.A.T. Wolfgang.
+\newblock {\em Objects, abstraction, data structures and design using C++}.
+\newblock John Wiley \& Sons, Inc., 2006.
+
+\end{thebibliography}

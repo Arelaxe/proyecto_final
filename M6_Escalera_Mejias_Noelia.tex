@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{mathtools}
+\usepackage{graphicx}
 \begin{document}
 \title{Estudio de la eficiencia del algoritmo de la burbuja en C++}
 \author{Noelia Escalera Mejías}
@@ -138,5 +139,15 @@ Hemos compilado el programa ordenacion.cpp de la siguiente manera:
 \begin{center}
 {\bf \it g++ ordenacion.cpp -o ordenacion}
 \end{center}
-Tras ejecutar el script ejecucuiones\_ordenacion.csh
+Tras ejecutar el script ejecucuiones\_ordenacion.csh:
+\includegraphics[scale=0.5]{1}
+A continuación, vamos a obtener el ajuste de regresión para el algoritmo anterior. Para realizar este ajuste, supondremos que $f(x)=ax^2+bx+c$ es la función a la que queremos ajustar nuestros tiempos. Según gnuplot, los valores más adecuados para a, b y c son:
+\begin{center}
+{\it a=8.11499e-09 \\ b=-1.26893e-05 \\ c=0.0486703}
+\end{center}
+Si dibujamos superpuestas f(x) y la función tiempos\_ordenacion.dat, nos queda lo siguiente:
+\includegraphics[scale=0.5]{2}
+\bibliography{bibliografia}
+\bibliographystyle{plain}
+\nocite{*}
 \end{document}

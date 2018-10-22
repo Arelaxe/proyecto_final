@@ -1,0 +1,12 @@
+% Encoding: UTF-8
+
+@Book{Carrillo2006,
+  title     = {Abstracci{\'o}n y estructuras de datos en C++},
+  publisher = {Delta},
+  year      = {2006},
+  author    = {Carrillo, A.G. and Fern{\'a}ndez-Valdivia, J.},
+  isbn      = {9788496477261},
+  url       = {https://books.google.es/books?id=qXoVzD23DBsC},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
