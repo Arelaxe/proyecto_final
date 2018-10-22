@@ -26,11 +26,40 @@ Para el proyecto final del curso de LaTeX y Git, he decidido hacer un estudio so
 \item {\bf Algoritmo de la Burbuja \it (Bubble Sort):} Sencillo algoritmo de ordenación. Funciona revisando cada elemento de la lista que va a ser ordenada con el siguiente, intercambiándolos de posición si están en el orden equivocado.
 \end{itemize}
 \section{Introducción}
+La eficiencia es un asunto importante a tener en cuenta a la hora de programar. La ejecución de un programa puede variar de durar microsegundos a horas debido a la implementación que usemos. Aquí mostramos una tabla que lo demuestra: \\ \\
+\begin{tabular}{|c||c||c||c||c||c||c|}
+\hline
+Tamaño & $\log_{2}(n)$ & n & n $\log_{2}(n)$ & $n^2$ & $n^3$ & $2^n$ \\
+\hline
+10 & 3.3 ns & 10 ns & 33 ns & 100 ns & 1 $\mu$s & 1 $\mu$s \\
+\hline 
+20 & 4.3 ns & 20 ns & 86 ns & 400 ns & 8 $\mu$s & 1 ms \\
+\hline
+30 & 4.9 ns & 30 ns & 147 ns & 900 ns & 27 $\mu$s & 1 s \\
+\hline
+40 & 5.3 ns & 40 ns & 213 ns & 2 $\mu$s & 64 $\mu$s & 18.3 min \\
+\hline
+50 & 5.6 ns & 50 ns & 282 ns & 3 $\mu$s & 125 $\mu$s & 13 días \\
+\hline
+100 & 6.6 ns & 100 ns & 664 ns & 10 $\mu$s & 1 ms & $40x10^12$ años \\
+\hline
+1000 & 10 ns & 1 $\mu$s & 10 $\mu$s & 1 ms & 1 s & \\
+\hline
+10000 & 13 ns & 10 $\mu$s & 133 $\mu$s & 100 ms & 16.7 min &\\
+\hline
+100000 & 17 ns & 100 $\mu$s & 2 ms & 10 s & 11.6 días & \\
+\hline
+1000000 & 20 ns & 1 ms & 20 ms & 16.7 min  & 31.7 años & \\
+\hline
+\end{tabular}
+Tiempos de ejecución en una máquina que realiza $10^9$ pasos por segundo (1GHz), según el tamaño del problema y el coste del algoritmo.
+\\ \\
 El algoritmo de la burbuja es uno de los primeros algoritmos de ordenación que se aprenden a programar debido a la sencillez de su implementación. Sin embargo, ¿es eficiente? Esto es lo que vamos a comprobar en el presente informe. El lenguaje de programación en el que se trabajará será C++11.
 \section{Estado del arte}
 La eficiencia teórica del algoritmo de la burbuja está ya bastante estudiada, debido a que es un algoritmo bastante conocido. Para estudiarla hemos usado las principales reglas para medir la eficiencia de bucles: sumatorios y reglas de progresiones aritméticas, así como la notación O.
 \section{Eficiencia teórica}
 Hay varias formas de implementar el algoritmo de la burbuja. Nosotros usaremos la más sencilla:
+\newpage
 \lstset{language=C, breaklines=true, basicstyle=\footnotesize}
 \begin{lstlisting}[frame=single]
 void ordenar(int *v, int n) {
@@ -131,6 +160,7 @@ int main(int argc, char * argv[])
  delete [] v; // Liberamos memoria dinamica
 }
 \end{lstlisting}
+{\tiny fichero: ordenacion.cpp}
 \lstset{language=Bash, breaklines=true, basicstyle=\footnotesize}
 \begin{lstlisting}[frame=single]
 #!/bin/csh
@@ -147,6 +177,7 @@ echo `./{$ejecutable} $i 10000` >> $salida
 @ i += $incremento
 end
 \end{lstlisting}
+{\tiny fichero: ejecuciones\_ordenacion.csh} \\
 Hemos compilado el programa ordenacion.cpp de la siguiente manera:
 \begin{center}
 {\bf \it g++ ordenacion.cpp -o ordenacion}
